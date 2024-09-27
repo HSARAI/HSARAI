@@ -5,8 +5,8 @@ Step 1: generate the 4D signal `spedata` via fft based time-frequency analysis, 
 
 ```
 python data_process_.py --slc_root ../data/slc_data/ \                 # single look complex data dir
-                       --spe4D_root ../data/slc_spe4D_fft_12/ \       # 4D TF signal dir
-                       --win 0.5                                      # hamming window size 
+                       --spe_root ../data/spe_data/ \       # 4D TF signal dir
+                       --win 0.5                                      # 2D-hamming window size 
 ```
 
 Step 2: train main model
@@ -24,9 +24,8 @@ Step 3: train coarse branches
 
 ```
 main1_train_CoarseBranhes.py 
-                        --save_dir ../data/slc_spe4D_fft_12_spe3D/ \            # spe3D features
-                        --spe_dir ../data/slc_spe4D_fft_12/ \
-                        --pretrained_model ../model.pth \
+                        -- train_Natural = 1 # 1 for train Natural model and 0 for train Man-made model
+                        --save trained models: modelcoarse1 and modelcoarse2
 ```
 
 step 4: test model
